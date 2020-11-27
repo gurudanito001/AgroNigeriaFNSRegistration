@@ -10,5 +10,8 @@ app.use(BodyParser.json());
 app.use(cors());
 
 app.use("/api/delegate", DelegateRoutes);
+app.post("/wakeup", function(req, res){
+    res.send("Awake")
+})
 
 module.exports = app;

@@ -26,6 +26,18 @@ function DelegateController() {
   const getAdmitted = function(req, res) {
     Delegate.getAdmitted().then(data => res.json(data));
   };
+  const makeVip = function(req, res) {
+    Delegate.makeVip(req.params.id).then(data => res.json(data));
+  };
+  const makeDelegate = function(req, res) {
+    Delegate.makeDelegate(req.params.id).then(data => res.json(data));
+  };
+  const admit = function(req, res) {
+    Delegate.admit(req.params.id).then(data => res.json(data));
+  };
+  const exclude = function(req, res) {
+    Delegate.exclude(req.params.id).then(data => res.json(data));
+  };
 
   return {
     addDelegate: addDelegate,
@@ -34,7 +46,11 @@ function DelegateController() {
     findEmail: findEmail,
     findCompanyName: findCompanyName,
     getVip: getVip,
-    getAdmitted: getAdmitted
+    getAdmitted: getAdmitted,
+    makeVip: makeVip,
+    makeDelegate: makeDelegate,
+    admit: admit,
+    exclude: exclude
   };
 }
 
