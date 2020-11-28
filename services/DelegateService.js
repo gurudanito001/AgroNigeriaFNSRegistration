@@ -3,7 +3,7 @@ const Delegate = require("../models/Delegate");
 function DelegateService() {
   return {
     add: data => new Delegate(data).save(),
-
+    delete: id => Delegate.findByIdAndDelete(id),
     findFirstname: firstname => Delegate.find({"firstname":
       { $regex: new RegExp("^" + firstname.toLowerCase(), "i") } }),
 
@@ -67,6 +67,19 @@ function DelegateService() {
         }
       }
     ),
+
+    findAdmittedFirstname: firstname => Delegate.find({"firstname":
+      { $regex: new RegExp("^" + firstname.toLowerCase(), "i") }, admitted: true }),
+
+    findAdmittedLastname: lastname => Delegate.find({"lastname":
+      { $regex: new RegExp("^" + lastname.toLowerCase(), "i") }, admitted: true }),
+    
+
+    findGuestFirstname: firstname => Delegate.find({"firstname":
+      { $regex: new RegExp("^" + firstname.toLowerCase(), "i") }, vip: true }),
+
+    findGuestLastname: lastname => Delegate.find({"lastname":
+      { $regex: new RegExp("^" + lastname.toLowerCase(), "i") }, vip: true }),
     
 
   };

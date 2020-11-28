@@ -8,6 +8,9 @@ function DelegateController() {
   const addDelegate = function(req, res) {
     Delegate.add(req.body).then(data => res.json(data));
   };
+  const deleteDelegate = function(req, res) {
+    Delegate.delete(req.params.id).then(data => res.json(data));
+  };
   const findFirstname = function(req, res) {
     Delegate.findFirstname(req.params.firstname).then(data => res.json(data));
   };
@@ -38,9 +41,23 @@ function DelegateController() {
   const exclude = function(req, res) {
     Delegate.exclude(req.params.id).then(data => res.json(data));
   };
+  const findAdmittedFirstname = function(req, res) {
+    Delegate.findAdmittedFirstname(req.params.firstname).then(data => res.json(data));
+  };
+  const findAdmittedLastname = function(req, res) {
+    Delegate.findAdmittedLastname(req.params.lastname).then(data => res.json(data));
+  };
+  const findGuestFirstname = function(req, res) {
+    Delegate.findGuestFirstname(req.params.firstname).then(data => res.json(data));
+  };
+  const findGuestLastname = function(req, res) {
+    Delegate.findGuestLastname(req.params.lastname).then(data => res.json(data));
+  };
+
 
   return {
     addDelegate: addDelegate,
+    deleteDelegate: deleteDelegate,
     findFirstname: findFirstname,
     findLastname: findLastname,
     findEmail: findEmail,
@@ -50,7 +67,11 @@ function DelegateController() {
     makeVip: makeVip,
     makeDelegate: makeDelegate,
     admit: admit,
-    exclude: exclude
+    exclude: exclude,
+    findAdmittedFirstname: findAdmittedFirstname,
+    findAdmittedLastname: findAdmittedLastname,
+    findGuestFirstname: findGuestFirstname,
+    findGuestLastname: findGuestLastname
   };
 }
 
